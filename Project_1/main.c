@@ -4,7 +4,7 @@
  
 #define PSU_2_1SWITCHON			0x10
 #define PSU_2_2SWITCHON			0x40
- 
+// Comment to see how work in tortoise
  
 char texto[] = "hola";
 char clave_m = 45;
