@@ -10,9 +10,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+#include <inttypes.h>
  
 #define PSU_2_1SWITCHON			0x10
 #define PSU_2_2SWITCHON			0x40
+
+int *getRandom (void )
+{
+	int i;	
+	static int r[10];
+	for(i=0;i<10;i++)
+	{r[1]=i*2;}
+	return r;
+}
 
 int z=1;
 char texto[] = "hola";
@@ -20,9 +31,10 @@ int buffer[5];
 char clave_m = 45;
 unsigned char DataBank0GPIOExpander_2 = 0x00; 
 int numero_1=40,numero_2=50 ;
-int *ptr_1, *ptr_2, *p;
+int *ptr_1, *ptr_2;
 int a=10, b=15, resultado=0; 
 int i;
+int *p;
  
 int main(void)
 {
@@ -58,10 +70,15 @@ int main(void)
 	
 	/***** Return array from function *****/
 	
-	p= get_random();
+	p=getRandom();
+	printf("\nValores p: ");
+	for( i=0;i<10;i++)
+	{	printf("%p",*p );
+		//p++;
+			}
 	
 	
-	
+		
     printf("\nMensaje original: %s", texto);
     printf("En bytes: ");
     muestra_mensaje(texto, 4);
@@ -143,12 +160,4 @@ void inicializa_buffer (int *buffer)
 	{buffer[i]=5;	}// En el caso del array no hay que deferenciarlo
 }
 
-int *get_random(void )
-{
-	int i;
-	
-	static int r[10];
-	for(i=0;int<10;i++)
-	{r[1]=i;}
-	return r;
-}
+
